@@ -180,12 +180,9 @@ export default {
       'changeMonth'
     ])
   },
-  fetch ({ store }) {
-    return new Promise(function (resolve) {
-      store.commit('setTodayMenu', moment(0, 'HH'))
-      store.commit('setMonth')
-      resolve()
-    })
+  created () {
+    this.$store.commit('setTodayMenu', moment(0, 'HH'))
+    this.$store.commit('setMonth')
   }
 }
 </script>
