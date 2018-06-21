@@ -8,7 +8,7 @@
           </h1>
 
           <div>
-            更新日: {{ $moment(todayMenu.date).format('YYYY年M月D日') }}
+            日付: {{ $moment(todayMenu.date).format('YYYY年M月D日') }}
           </div>
 
           <!-- 今日の献立 -->
