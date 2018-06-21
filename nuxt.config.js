@@ -18,10 +18,17 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   /*
-  ** Module configuration
+  ** Modules configuration
   */
-  module: [
-    'bootstrap-vue/nuxt'
+  modules: [
+    'bootstrap-vue/nuxt',
+    ['@nuxtjs/moment', ['ja']]
+  ],
+  /*
+  ** Plugins configuration
+  */
+  plugins: [
+    '~/plugins/vue-scrollto.js'
   ],
   /*
   ** Build configuration

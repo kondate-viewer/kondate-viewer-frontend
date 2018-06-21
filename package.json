@@ -13,8 +13,13 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/moment": "^1.0.0",
     "bootstrap-vue": "^2.0.0-rc.11",
-    "nuxt": "^1.0.0"
+    "moment": "^2.22.2",
+    "node-sass": "^4.9.0",
+    "nuxt": "^1.0.0",
+    "sass-loader": "^7.0.3",
+    "vue-scrollto": "^2.11.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
