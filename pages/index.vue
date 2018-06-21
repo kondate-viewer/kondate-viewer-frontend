@@ -24,9 +24,7 @@
                 </p>
               </b-card>
 
-              <div class="w-100 d-block d-md-none">
-
-              </div>
+              <div class="w-100 d-block d-md-none"></div>
 
               <b-card title="昼食">
                 <p v-for="dish in todayMenu.menus.lunch.dishes"
@@ -36,9 +34,7 @@
                 </p>
               </b-card>
 
-              <div class="w-100 d-block d-md-none">
-
-              </div>
+              <div class="w-100 d-block d-md-none"></div>
 
               <b-card title="夕食">
                 <p v-for="dish in todayMenu.menus.dinner.dishes"
