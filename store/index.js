@@ -1,7 +1,5 @@
-import moment from 'moment'
-
 export const state = () => ({
-  listOfMenus: [
+  menus: [
     {
       date: '2018-05-20',
       menus: {
@@ -282,28 +280,5 @@ export const state = () => ({
         }
       }
     }
-  ],
-  todayMenu: null,
-  viewMonthMenus: [],
-  viewMonth: null
+  ]
 })
-
-export const mutations = {
-  setTodayMenu (state, today) {
-    state.todayMenu = state.listOfMenus.filter(function (item, index) {
-      if (moment(item.date).isSame(today, 'day')) return true
-    })[0]
-  },
-  setMonth (state) {
-    state.viewMonth = moment(1, 'DD')
-    state.viewMonthMenus = state.listOfMenus.filter(function (item, index) {
-      if (moment(item.date).isSame(state.viewMonth, 'month')) return true
-    })
-  },
-  changeMonth (state, deltaMonth) {
-    state.viewMonth = moment(state.viewMonth).add(deltaMonth, 'M')
-    state.viewMonthMenus = state.listOfMenus.filter(function (item, index) {
-      if (moment(item.date).isSame(state.viewMonth, 'month')) return true
-    })
-  }
-}

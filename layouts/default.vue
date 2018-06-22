@@ -13,13 +13,28 @@
 </template>
 
 <style lang="scss">
-header {
-  background-color: #c9c9c9;
-  width: 100%;
-  text-align: center;
-  & p {
-    margin-bottom: 0.1em;
-    font-size: 0.6em;
+  @import url('~/assets/css/rounded-mplus-1p.scss');
+
+  $background-color: #f7f3e8;
+
+  body {
+    font-family: 'Rounded Mplus 1p', sans-serif;
+    font-size: 1.4rem;
+    background-color: $background-color;
+    color: #3c3c3c;
   }
-}
+
+  p {
+    word-break: keep-all;
+  }
+
+  header {
+    background-color: #c9c9c9;
+    width: 100%;
+    text-align: center;
+    & p {
+      margin-bottom: 0.1em;
+      font-size: 0.6em;
+    }
+  }
 </style>
