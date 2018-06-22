@@ -135,14 +135,14 @@
                 v-if="$moment(1, 'DD').isBefore(month)"
                 @click="move()"
               >
-                今月へ
+                &lsaquo; 今月
               </b-btn>
-              <b-btn disabled>{{ month.format('YYYY年M月') }}</b-btn>
+              <b-btn disabled>{{ month.format('YY年M月') }}</b-btn>
               <b-btn
                 v-if="$moment(1, 'DD').isAfter(month)"
                 @click="move()"
               >
-                今月へ
+                今月 &rsaquo;
               </b-btn>
             </b-button-group>
 
