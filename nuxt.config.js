@@ -27,9 +27,7 @@ module.exports = {
   /*
   ** Plugins configuration
   */
-  plugins: [
-    '~/plugins/vue-scrollto.js'
-  ],
+  plugins: [],
   /*
   ** Build configuration
   */
