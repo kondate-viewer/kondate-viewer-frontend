@@ -13,12 +13,12 @@
 </template>
 
 <style lang="scss">
-  @import url('~/assets/css/rounded-mplus-1p.scss');
+  @import url('https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css');
 
   $background-color: #f7f3e8;
 
   body {
-    font-family: 'Rounded Mplus 1p', sans-serif;
+    font-family: 'Rounded Mplus 1c', sans-serif;
     font-size: 1.4rem;
     background-color: $background-color;
     color: #3c3c3c;
