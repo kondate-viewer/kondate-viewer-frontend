@@ -8,19 +8,33 @@
       @click="showLicense = false"
     >
       <p class="align-middle">
-        This project is licensed under the
+        このプロジェクトは
         <a href="https://github.com/kondate-viewer/kondate-viewer-frontend/blob/master/LICENSE">
-          MIT License</a><!--
-          -->.
+          MIT License
+        </a>
+        が適用されます.
+
+        例外として, アイコンに一部
+        <a href="https://fontawesome.com/">
+          Font Awesome
+        </a>
+        の著作物を利用しています.
+        Font Awesome の著作物には
+        <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">
+          CC BY 4.0
+        </a>
+        が適用されます.
       </p>
     </footer>
 
     <footer
       v-else
-      class="pl-1 mx-0 text-left copyright"
+      class="pl-1 mx-0 text-right copyright"
     >
       <p>
-        <span @click="showLicense = true">&copy;</span>
+        <span @click="showLicense = true">
+          ライセンスについて
+        </span>
       </p>
     </footer>
   </div>
@@ -37,8 +51,6 @@
 </script>
 
 <style lang="scss">
-  @import url('https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css');
-
   $background-color: #f7f3e8;
   $footer-height: 1em;
 
@@ -48,11 +60,13 @@
   }
 
   body {
-    font-family: 'Rounded Mplus 1c', sans-serif;
     font-size: 1.4rem;
     background-color: $background-color;
     color: #3c3c3c;
     margin-bottom: $footer-height;
+    .wf-roundedmplus1c-n4-active & {
+      font-family: 'Rounded Mplus 1c', sans-serif;
+    }
   }
 
   p {

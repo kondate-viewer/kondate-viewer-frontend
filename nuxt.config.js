@@ -3,14 +3,9 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'Kondate Viewer',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'This is the kondate-viewer frontend.' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    script: [
+      //{ src: 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' },
+      { src: '/js/webfontloader.js' }
     ]
   },
   /*
@@ -22,12 +17,28 @@ module.exports = {
   */
   modules: [
     'bootstrap-vue/nuxt',
-    ['@nuxtjs/moment', ['ja']]
+    ['@nuxtjs/moment', ['ja']],
+    '@nuxtjs/pwa'
   ],
-  /*
-  ** Plugins configuration
-  */
-  plugins: [],
+  workbox: {
+    dev: true
+  },
+  manifest: {
+    name: '寮食堂 献立',
+    short_name: '寮献立',
+    description: '寮食堂の献立を閲覧できます',
+    lang: 'ja',
+    theme_color: '#fc9638',
+    background_color: '#fc9638',
+    display: 'standalone',
+    scope: '/',
+    start_url: '/'
+  },
+  render: {
+    http2: {
+      push: true
+    }
+  },
   /*
   ** Build configuration
   */

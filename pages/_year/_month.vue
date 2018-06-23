@@ -196,16 +196,16 @@
 </script>
 
 <style lang="scss" scoped>
-  @import url('https://fonts.googleapis.com/earlyaccess/mplus1p.css');
-
   $background-color: #f7f3e8;
 
   .section-header {
     color: white;
     background-color: grey;
-    font-family: 'Mplus 1p', sans-serif;
     font-weight: normal;
     border-radius: 4px;
+    .wf-mplus1p-n4-active & {
+      font-family: 'Mplus 1p', sans-serif;
+    }
     & p {
       margin: 0;
     }
