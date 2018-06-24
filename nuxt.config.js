@@ -24,13 +24,14 @@ module.exports = {
     dev: true
   },
   manifest: {
-    name: '寮食堂 献立',
-    short_name: '寮献立',
-    description: '寮食堂の献立を閲覧できます',
+    name: '奈良高専 寮食堂 献立',
+    short_name: '寮食堂献立',
+    description: '奈良高専 寮食堂の献立を閲覧できます',
     lang: 'ja',
     theme_color: '#fc9638',
     background_color: '#fc9638',
     display: 'standalone',
+    orientation: 'any',
     scope: '/',
     start_url: '/'
   },
