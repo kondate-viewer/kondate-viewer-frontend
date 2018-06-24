@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <nuxt id="contents"/>
+  <div id="contents">
+    <nuxt/>
 
     <footer
       v-if="showLicense"
       class="text-center"
-      @click="showLicense = false"
+      @click="toggleLicense()"
     >
-      <p class="align-middle">
+      <p class="px-1 my-0 align-middle">
         このプロジェクトは
         <a href="https://github.com/kondate-viewer/kondate-viewer-frontend/blob/master/LICENSE">
           MIT License
@@ -29,10 +29,10 @@
 
     <footer
       v-else
-      class="pl-1 mx-0 text-right copyright"
+      class="text-right copyright"
     >
-      <p>
-        <span @click="showLicense = true">
+      <p class="px-1 my-0">
+        <span @click="toggleLicense()">
           ライセンスについて
         </span>
       </p>
@@ -45,6 +45,11 @@
     data () {
       return {
         showLicense: false
+      }
+    },
+    methods: {
+      toggleLicense() {
+        this.showLicense = !this.showLicense
       }
     }
   }
@@ -77,12 +82,15 @@
     position: absolute;
     bottom: 0;
     height: $footer-height;
-    background-color: #c9c9c9;
     width: 100%;
     &.copyright {
       background-color: inherit;
+      & p {
+        background-color: inherit;
+      }
     }
     & p {
+      background-color: #c9c9c9;
       margin-bottom: 0.1em;
       font-size: 0.6em;
     }
