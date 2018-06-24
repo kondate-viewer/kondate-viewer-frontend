@@ -17,6 +17,7 @@ module.exports = {
   */
   modules: [
     'bootstrap-vue/nuxt',
+    ['@nuxtjs/google-analytics', { id: 'UA-121332001-1' }],
     ['@nuxtjs/moment', ['ja']],
     '@nuxtjs/pwa'
   ],
