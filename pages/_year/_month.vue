@@ -2,155 +2,123 @@
   <b-container>
     <b-row>
       <b-col>
+        <h1
+          class="pt-3 title"
+          @click="$router.push({ path: '/' })"
+        >
+          奈良高専 寮食堂 献立表
+        </h1>
+
         <div>
-          <h1 class="pt-3 title">
-            奈良高専 寮食堂 献立表
-          </h1>
+          日付: {{ $moment().format('YYYY年M月D日') }}
+        </div>
 
-          <div>
-            日付: {{ $moment().format('YYYY年M月D日') }}
-          </div>
+        <!-- 献立一覧 -->
+        <div class="my-3">
+          <h2 id="menuList" class="px-3 py-1 section-header">
+            {{ month.format('M月') }}の献立一覧
+          </h2>
+        </div>
 
-          <!-- 今日の献立 -->
-          <div class="mt-3">
-            <h2 class="sticky-top px-3 py-1 section-header">今日の献立</h2>
+        <div
+          v-if="menus.length !== 0"
+          v-for="menu in menus"
+          :key="menu.date"
+        >
+          <div class="sticky-top mt-3">
+            <h2
+              v-if="$moment(menu.date).isSame($moment(), 'day')"
+              class="pt-2 date today"
+            >
+              <p class="left">
+                {{ $moment(menu.date).format('M月D日') }}
+              </p>
 
-            <b-card-group>
-              <b-card title="朝食">
-                <p v-for="dish in todayMenu.menus.breakfast.dishes"
-                   :key="dish"
-                   class="card-text">
-                  {{ dish }}
-                </p>
-              </b-card>
+              <p class="right">
+                今日
+              </p>
+            </h2>
 
-              <div class="w-100 d-block d-md-none"></div>
+            <h2
+              v-else
+              class="pt-2 date"
+            >
+              <p class="left">
+                {{ $moment(menu.date).format('M月D日') }}
+              </p>
 
-              <b-card title="昼食">
-                <p v-for="dish in todayMenu.menus.lunch.dishes"
-                   :key="dish"
-                   class="card-text">
-                  {{ dish }}
-                </p>
-              </b-card>
-
-              <div class="w-100 d-block d-md-none"></div>
-
-              <b-card title="夕食">
-                <p v-for="dish in todayMenu.menus.dinner.dishes"
-                   :key="dish"
-                   class="card-text">
-                  {{ dish }}
-                </p>
-              </b-card>
-            </b-card-group>
-          </div>
-
-          <!-- 献立一覧 -->
-          <div class="mt-3">
-            <h2 id="menuList" class="px-3 py-1 section-header">
-              {{ month.format('M月') }}の献立一覧
+              <p class="right">
+                {{ $moment(menu.date).from($moment(0, 'HH')) }}
+              </p>
             </h2>
           </div>
 
-          <div
-            v-if="menus.length !== 0"
-            v-for="menu in menus"
-            :key="menu.date"
-          >
-            <div class="sticky-top mt-3">
-              <h2
-                v-if="$moment(menu.date).isSame($moment(), 'day')"
-                class="pt-2 date today"
-              >
-                <p class="left">
-                  {{ $moment(menu.date).format('M月D日') }}
-                </p>
+          <b-card-group>
+            <b-card title="朝食" lg="4" colums="12">
+              <p v-for="dish in menu.menus.breakfast.dishes"
+                 :key="dish"
+                 class="card-text">
+                {{ dish }}
+              </p>
+            </b-card>
 
-                <p class="right">
-                  今日
-                </p>
-              </h2>
+            <b-card title="昼食" lg="4" colums="12">
+              <p v-for="dish in menu.menus.lunch.dishes"
+                 :key="dish"
+                 class="card-text">
+                {{ dish }}
+              </p>
+            </b-card>
 
-              <h2
-                v-else
-                class="pt-2 date"
-              >
-                <p class="left">
-                  {{ $moment(menu.date).format('M月D日') }}
-                </p>
+            <b-card title="夕食" lg="4" colums="12">
+              <p v-for="dish in menu.menus.dinner.dishes"
+                 :key="dish"
+                 class="card-text">
+                {{ dish }}
+              </p>
+            </b-card>
+          </b-card-group>
+        </div>
 
-                <p class="right">
-                  {{ $moment(menu.date).from($moment(0, 'HH')) }}
-                </p>
-              </h2>
-            </div>
-
-            <b-card-group>
-              <b-card title="朝食" lg="4" colums="12">
-                <p v-for="dish in menu.menus.breakfast.dishes"
-                   :key="dish"
-                   class="card-text">
-                  {{ dish }}
-                </p>
-              </b-card>
-
-              <b-card title="昼食" lg="4" colums="12">
-                <p v-for="dish in menu.menus.lunch.dishes"
-                   :key="dish"
-                   class="card-text">
-                  {{ dish }}
-                </p>
-              </b-card>
-
-              <b-card title="夕食" lg="4" colums="12">
-                <p v-for="dish in menu.menus.dinner.dishes"
-                   :key="dish"
-                   class="card-text">
-                  {{ dish }}
-                </p>
-              </b-card>
-            </b-card-group>
-          </div>
-
-          <div
-            v-if="menus.length === 0"
-            class="my-3"
-          >
-            <h3 class="text-center">
+        <div
+          v-if="menus.length === 0"
+          class="my-3"
+        >
+          <b-card>
+            <h3 class="my-5 text-center">
               まだありません
             </h3>
-          </div>
-
-          <b-button-toolbar
-            key-nav
-            class="my-3 justify-content-center"
-          >
-            <b-button-group class="mx-2">
-              <b-btn @click="move(-1)">&lsaquo;</b-btn>
-            </b-button-group>
-
-            <b-button-group class="mx-2">
-              <b-btn
-                v-if="$moment(1, 'DD').isBefore(month)"
-                @click="move()"
-              >
-                &lsaquo; 今月
-              </b-btn>
-              <b-btn disabled>{{ month.format('YY年M月') }}</b-btn>
-              <b-btn
-                v-if="$moment(1, 'DD').isAfter(month)"
-                @click="move()"
-              >
-                今月 &rsaquo;
-              </b-btn>
-            </b-button-group>
-
-            <b-button-group class="mx-2">
-              <b-btn @click="move(1)">&rsaquo;</b-btn>
-            </b-button-group>
-          </b-button-toolbar>
+          </b-card>
         </div>
+
+        <b-button-toolbar
+          key-nav
+          class="my-3 justify-content-center"
+        >
+          <b-button-group class="mx-2">
+            <b-btn @click="move(-1)">&lsaquo;</b-btn>
+          </b-button-group>
+
+          <b-button-group class="mx-2">
+            <b-btn
+              v-if="$moment(1, 'DD').isBefore(month)"
+              @click="move()"
+            >
+              &lsaquo; 今月
+            </b-btn>
+            <b-btn disabled>{{ month.format('YY年M月') }}</b-btn>
+            <b-btn
+              v-if="$moment(1, 'DD').isAfter(month)"
+              @click="move()"
+            >
+              今月 &rsaquo;
+            </b-btn>
+          </b-button-group>
+
+          <b-button-group class="mx-2">
+            <b-btn @click="move(1)">&rsaquo;</b-btn>
+          </b-button-group>
+        </b-button-toolbar>
       </b-col>
     </b-row>
   </b-container>
@@ -163,8 +131,7 @@
     data () {
       return {
         menus: [],
-        month: null,
-        todayMenu: null
+        month: null
       }
     },
     methods: {
@@ -188,9 +155,6 @@
       this.menus = this.$store.state.menus.filter(function (item, index) {
         if (moment(item.date).isSame(month, 'month')) return true
       })
-      this.todayMenu = this.$store.state.menus.filter(function (item, index) {
-        if (moment(item.date).isSame(moment(), 'day')) return true
-      })[0]
     }
   }
 </script>
