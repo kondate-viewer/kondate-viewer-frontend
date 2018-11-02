@@ -6,7 +6,7 @@
           class="pt-3 title"
           @click="$router.push({ path: '/' })"
         >
-          奈良高専 寮食堂 献立表
+          献立表 (仮)
         </h1>
 
         <div>
